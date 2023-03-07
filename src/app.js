@@ -77,12 +77,15 @@ function bubbleSort() {
   while (clear.childNodes.length > 0) {
     clear.removeChild(clear.lastChild);
   }
+  var base = 1;
 
-  while (size > 0) {
+  while (base < size - 1) {
     var flag = 0;
-    for (var i = 1; i < size - 1; i++) {
+    var value = 0;
+    var min_idx;
+    for (var i = base + 1; i < size; i++) {
       var child = children[i];
-      var aux = children[i + 1];
+      var aux = children[base];
       var childnum = child.getElementsByClassName("number");
       var auxnum = aux.getElementsByClassName("number");
       var childint = childnum[0].innerText;
@@ -110,16 +113,28 @@ function bubbleSort() {
         auxint = 13;
       }
 
-      if (parseInt(auxint) < parseInt(childint)) {
-        console.log(
-          "changing" + childnum[0].innerText + "for" + auxnum[0].innerText
-        );
-        clone.insertBefore(aux, child);
+      if (value == 0) {
+        value = parseInt(auxint);
+      }
+
+      if (value > parseInt(childint)) {
+        min_idx = i;
+        value = parseInt(childint);
+
         flag = 1;
       }
     }
 
     if (flag == 1) {
+      console.log("menor" + value + "posicion" + min_idx);
+      var k = children[base];
+      var l = children[min_idx];
+      clone.insertBefore(l, k);
+      if (min_idx - base > 1) {
+        var z = children[min_idx + 1];
+        clone.insertBefore(k, z);
+      }
+
       for (let j = 1; j < siaux; j++) {
         var son = children[j];
         var clonecd = son.cloneNode(true);
@@ -130,7 +145,7 @@ function bubbleSort() {
     log.appendChild(document.createElement("div"));
     let div = document.createElement("div");
 
-    size--;
+    base++;
     console.log(size);
   }
 }
