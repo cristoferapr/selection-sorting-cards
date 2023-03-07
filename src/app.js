@@ -26,11 +26,16 @@ const cardgenerator = () => {
   if (val == "") {
     alert("please enter a valid number");
   }
+  var div = document.getElementById("cards");
+  var clear = document.getElementById("mayorcontainer");
+  while (clear.childNodes.length > 2) {
+    clear.removeChild(clear.lastChild);
+  }
   for (let i = 0; i < val; i++) {
     let symbol = getRandom(4);
     let number = getRandom(13);
-    var div = document.getElementById("cards"),
-      clone = div.cloneNode(true); // true means clone all childNodes and all event handlers
+
+    var clone = div.cloneNode(true); // true means clone all childNodes and all event handlers
 
     var symbolUp = clone.getElementsByClassName("symbol-up");
     var cardNumber = clone.getElementsByClassName("number");
@@ -61,16 +66,30 @@ const cardgenerator = () => {
 
 function bubbleSort() {
   var element = document.getElementById("mayorcontainer");
-  var children = element.children;
+  var clone = element.cloneNode(true); // true means clone all childNodes and all event handlers
+  var children = clone.children;
+  var log = document.getElementById("logcontainer");
+  let siaux = children.length;
   let size = children.length;
-  while (size > 1) {
+  console.log(size);
+
+  var clear = document.getElementById("logcontainer");
+  while (clear.childNodes.length > 1) {
+    clear.removeChild(clear.lastChild);
+  }
+
+  while (size > 0) {
+    var flag = 0;
     for (var i = 1; i < size - 1; i++) {
       var child = children[i];
       var aux = children[i + 1];
       var childnum = child.getElementsByClassName("number");
       var auxnum = aux.getElementsByClassName("number");
       var childint = childnum[0].innerText;
+      console.log(childint);
+
       var auxint = auxnum[0].innerText;
+      console.log(auxint);
 
       if (childint == "A") {
         childint = 1;
@@ -90,14 +109,29 @@ function bubbleSort() {
       } else if (auxint == "K") {
         auxint = 13;
       }
+
       if (parseInt(auxint) < parseInt(childint)) {
         console.log(
           "changing" + childnum[0].innerText + "for" + auxnum[0].innerText
         );
-        element.insertBefore(aux, child);
+        clone.insertBefore(aux, child);
+        flag = 1;
       }
     }
+
+    if (flag == 1) {
+      for (let j = 1; j < siaux; j++) {
+        var son = children[j];
+        var clonecd = son.cloneNode(true);
+        log.appendChild(clonecd, log);
+      }
+    }
+
+    log.appendChild(document.createElement("div"));
+    let div = document.createElement("div");
+
     size--;
+    console.log(size);
   }
 }
 
