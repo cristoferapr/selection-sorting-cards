@@ -74,7 +74,7 @@ function bubbleSort() {
   console.log(size);
 
   var clear = document.getElementById("logcontainer");
-  while (clear.childNodes.length > 1) {
+  while (clear.childNodes.length > 0) {
     clear.removeChild(clear.lastChild);
   }
 
