@@ -1,0 +1,56 @@
+
+
+#botones {
+  margin-top: 20px;
+}
+
+#numberofcards {
+  margin-top: 20px;
+  margin-bottom: 15px;
+  width: 75px;
+  border-radius: 5px;
+}
+#generate {
+  border-radius: 5px;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+#bubble {
+  border-radius: 5px;
+}
+
+.base {
+  align-items: start;
+  background-color: green;
+  width: fit-content;
+}
+.card-container {
+  background-color: white;
+  min-width: 70px;
+  border-width: 2px;
+  border-style: solid;
+  border-color: black;
+  align-items: left;
+  margin: 0 auto;
+  margin-top: 40px;
+  border-radius: 10px;
+}
+
+.symbol-up {
+  display: block;
+  text-align: left;
+  font-size: 18px;
+  padding-left: 10px;
+}
+
+.number {
+  font-size: 22px;
+}
+
+.symbol-down {
+  display: block;
+  transform: rotate(180deg);
+  text-align: left;
+  font-size: 18px;
+  padding-left: 10px;
+}

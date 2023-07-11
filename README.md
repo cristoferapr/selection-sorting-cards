@@ -1,0 +1,2 @@
+# sc
+A JavaScript project
